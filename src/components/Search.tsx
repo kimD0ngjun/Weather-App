@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { AiOutlineSearch } from "react-icons/ai";
 import { LuMapPin } from "react-icons/lu";
 
