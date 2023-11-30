@@ -9,8 +9,17 @@ const NotFoundWrapper = styled.div`
   height: 100rem;
 `;
 
+const NotFoundIcon = styled(TbZoomQuestion)`
+  width: 200rem;
+  height: 200rem;
+`;
+
 const NotFound = () => {
-  return <NotFoundWrapper></NotFoundWrapper>;
+  return (
+    <NotFoundWrapper>
+      <NotFoundIcon />
+    </NotFoundWrapper>
+  );
 };
 
 export default NotFound;
