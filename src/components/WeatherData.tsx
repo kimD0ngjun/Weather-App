@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-const WeatherBox = () => {
+const WeatherData = () => {
   return <></>;
 };
 
-export default WeatherBox;
+export default WeatherData;

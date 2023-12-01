@@ -1,13 +1,11 @@
 import "./App.css";
 
-import SearchBox from "./components/Search";
-import NotFound from "./components/NotFound";
+import AppFrame from "./AppFrame";
 
 function App() {
   return (
     <>
-      <SearchBox />
-      <NotFound />
+      <AppFrame />
     </>
   );
 }
