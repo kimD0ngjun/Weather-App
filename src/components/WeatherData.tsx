@@ -54,7 +54,7 @@ const WeatherData = () => {
         <Humidity>
           <HumidityIcon />
           <TextContainer>
-            <Span></Span>
+            <Span>100 %</Span>
             <HumidityDescription>습도</HumidityDescription>
           </TextContainer>
         </Humidity>
@@ -62,7 +62,7 @@ const WeatherData = () => {
         <Wind>
           <WindIcon />
           <TextContainer>
-            <Span></Span>
+            <Span>100 km/h</Span>
             <WindDescription>풍속</WindDescription>
           </TextContainer>
         </Wind>
