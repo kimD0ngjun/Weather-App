@@ -2,11 +2,23 @@ import styled from "styled-components";
 import { FaHandHoldingWater } from "react-icons/fa";
 import { PiWind } from "react-icons/pi";
 
-const WeatherDetails = styled.div``;
+const WeatherDetails = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 380rem;
+  padding: 10rem;
+`;
 
-const Humidity = styled.div``;
+const Humidity = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
 
-const Wind = styled.div``;
+const Wind = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
 
 const HumidityIcon = styled(FaHandHoldingWater)`
   width: 50rem;
@@ -18,13 +30,25 @@ const WindIcon = styled(PiWind)`
   height: 50rem;
 `;
 
-const TextContainer = styled.div``;
+const TextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 10rem;
+`;
 
-const Span = styled.span``;
+const Span = styled.span`
+  color: #06283d;
+  font-size: 18rem;
+  font-weight: 500;
+`;
 
-const HumidityDescription = styled.p``;
-
-const WindDescription = styled.p``;
+const Description = styled.p`
+  margin: 0rem;
+  text-align: right;
+  color: #06283d;
+  font-size: 15rem;
+  font-weight: 500;
+`;
 
 const WeatherDetailsContent = () => {
   return (
@@ -33,7 +57,7 @@ const WeatherDetailsContent = () => {
         <HumidityIcon />
         <TextContainer>
           <Span>100 %</Span>
-          <HumidityDescription>습도</HumidityDescription>
+          <Description>습도</Description>
         </TextContainer>
       </Humidity>
 
@@ -41,7 +65,7 @@ const WeatherDetailsContent = () => {
         <WindIcon />
         <TextContainer>
           <Span>100 km/h</Span>
-          <WindDescription>풍속</WindDescription>
+          <Description>풍속</Description>
         </TextContainer>
       </Wind>
     </WeatherDetails>
