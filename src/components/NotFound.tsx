@@ -26,7 +26,7 @@ const NotFoundMessage = styled.p`
   justify-content: center;
 `;
 
-const NotFound = () => {
+const NotFoundData = () => {
   return (
     <NotFoundWrapper>
       <NotFoundIcon />
@@ -35,4 +35,4 @@ const NotFound = () => {
   );
 };
 
-export default NotFound;
+export default NotFoundData;
