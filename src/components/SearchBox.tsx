@@ -2,10 +2,20 @@ import styled from "styled-components";
 import { AiOutlineSearch } from "react-icons/ai";
 import { LuMapPin } from "react-icons/lu";
 
+const SearchBoxWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10rem;
+  padding: 10rem;
+  background-color: #fff;
+  border-radius: 5rem;
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.1);
+`;
+
 const LocationIcon = styled(LuMapPin)`
   color: #555;
-  width: 20rem;
-  height: 20rem;
+  width: 25rem;
+  height: 25rem;
 `;
 
 const Input = styled.input`
@@ -29,22 +39,13 @@ const SearchButton = styled.button`
 
   &:active {
     transform: translateY(2rem);
+    cursor: grab;
   }
 `;
 
 const SearchIcon = styled(AiOutlineSearch)`
-  width: 20rem;
-  height: 20rem;
-`;
-
-const SearchBoxWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 10rem;
-  padding: 10rem;
-  background-color: #fff;
-  border-radius: 5rem;
-  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.1);
+  width: 22rem;
+  height: 22rem;
 `;
 
 const SearchBox = () => {

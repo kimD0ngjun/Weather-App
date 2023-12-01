@@ -1,7 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
+import clickedReducer from "./ClickSlice";
 
 const store = configureStore({
-  reducer: {},
+  reducer: {
+    click: clickedReducer,
+  },
 });
 
 export type RootState = ReturnType<typeof store.getState>;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import SearchBox from "./components/SearchBox";
-// import NotFoundData from "./components/NotFound";
+import NotFoundData from "./components/NotFound";
 import WeatherData from "./components/WeatherData";
 
 const AppFrameWrapper = styled.div`
