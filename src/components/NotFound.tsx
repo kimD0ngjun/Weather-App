@@ -11,13 +11,19 @@ const NotFoundWrapper = styled.div`
 const NotFoundIcon = styled(TbZoomQuestion)`
   width: 200rem;
   height: 200rem;
+  margin-top: 30rem;
+  margin-bottom: 30rem;
 `;
 
 const NotFoundMessage = styled.p`
   color: #06283d;
   font-size: 18rem;
   font-weight: 500;
-  margin-top: 12rem;
+  text-align: center;
+  padding: 0rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const NotFound = () => {
