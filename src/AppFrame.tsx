@@ -1,10 +1,6 @@
 import styled from "styled-components";
 import SearchBox from "./components/SearchBox";
-import NotFoundData from "./components/NotFound";
-import WeatherData from "./components/WeatherData";
-
-import { RootState } from "./redux/store";
-import { useAppSelector } from "./redux/hooks";
+import ContentFrame from "./components/ContentFrame";
 
 const AppFrameWrapper = styled.div`
   width: 350rem;
@@ -17,12 +13,10 @@ const AppFrameWrapper = styled.div`
 `;
 
 const AppFrame = () => {
-  const isClicked = useAppSelector((state: RootState) => state.click.click);
-
   return (
     <AppFrameWrapper>
       <SearchBox />
-      {isClicked ? <WeatherData /> : null}
+      <ContentFrame />
     </AppFrameWrapper>
   );
 };
