@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import SearchBox from "./components/SearchBox";
-import NotFoundData from "./components/NotFound";
+// import NotFoundData from "./components/NotFound";
 import WeatherData from "./components/WeatherData";
 
 const AppFrameWrapper = styled.div`
-  width: 400rem;
+  width: 350rem;
   padding-left: 40rem;
   padding-right: 40rem;
   padding-top: 30rem;

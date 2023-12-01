@@ -6,7 +6,7 @@ const WeatherDetails = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 380rem;
+  width: 330rem;
   padding: 10rem;
 `;
 
@@ -39,7 +39,7 @@ const TextContainer = styled.div`
 const Span = styled.span`
   color: #06283d;
   font-size: 18rem;
-  font-weight: 500;
+  font-weight: 650;
 `;
 
 const Description = styled.p`
@@ -47,7 +47,7 @@ const Description = styled.p`
   text-align: right;
   color: #06283d;
   font-size: 15rem;
-  font-weight: 500;
+  font-weight: 550;
 `;
 
 const WeatherDetailsContent = () => {

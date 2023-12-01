@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import WeatherBoxContent from "./WeatherBox";
+import WeatherBoxContent from "./WeatherBoxContent";
 import WeatherDetailsContent from "./WeatherDetailsContent";
 
 const WeatherDataWrapper = styled.div`
