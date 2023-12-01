@@ -3,7 +3,7 @@ import SearchBox from "./components/SearchBox";
 import NotFoundData from "./components/NotFound";
 import WeatherData from "./components/WeatherData";
 
-import { AppDispatch, RootState } from "./redux/store";
+import { RootState } from "./redux/store";
 import { useAppSelector } from "./redux/hooks";
 
 const AppFrameWrapper = styled.div`

@@ -2,11 +2,16 @@ import styled from "styled-components";
 import { AiOutlineSearch } from "react-icons/ai";
 import { LuMapPin } from "react-icons/lu";
 
+import { AppDispatch } from "../redux/store";
+import { useAppDispatch } from "../redux/hooks";
+import { click } from "../redux/ClickSlice";
+
 const SearchBoxWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 10rem;
   padding: 10rem;
+  margin-bottom: 10rem;
   background-color: #fff;
   border-radius: 5rem;
   box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.1);
@@ -49,11 +54,16 @@ const SearchIcon = styled(AiOutlineSearch)`
 `;
 
 const SearchBox = () => {
+  const dispatch: AppDispatch = useAppDispatch();
+  const handleClick = () => {
+    dispatch(click());
+  };
+
   return (
     <SearchBoxWrapper>
       <LocationIcon />
       <Input type="text" placeholder="Enter your location" />
-      <SearchButton>
+      <SearchButton onClick={handleClick}>
         <SearchIcon />
       </SearchButton>
     </SearchBoxWrapper>
