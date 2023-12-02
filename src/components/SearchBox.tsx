@@ -8,6 +8,8 @@ import { AppDispatch } from "../redux/store";
 import { useAppDispatch } from "../redux/hooks";
 import { click } from "../redux/ClickSlice";
 
+import getWeatherData from "../api/WeatherAPI";
+
 const SearchBoxWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -59,7 +61,7 @@ const SearchBox = () => {
   const dispatch: AppDispatch = useAppDispatch();
   const handleClick = () => {
     dispatch(click());
-    // axios 관련 함수(인자는 city)
+    getWeatherData(city);
   };
 
   const [city, setCity] = useState("");
