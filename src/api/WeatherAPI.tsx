@@ -1,5 +1,14 @@
 import axios from "axios";
 import key from "./ApiKey";
+import { WeatherDataForm } from "../utility/inteface";
+
+const weatherDataForm: WeatherDataForm = {
+  city: "",
+  weather: "",
+  temperature: 0,
+  humidity: 0,
+  windSpeed: 0,
+};
 
 const getWeatherData = async (city: string) => {
   try {
@@ -14,12 +23,29 @@ const getWeatherData = async (city: string) => {
       }
     );
 
-    // API 응답에서 필요한 데이터 추출
     const weatherData = response.data;
 
-    // 여기서 받아온 데이터를 필요에 맞게 처리하거나 반환할 수 있습니다.
-    console.log(weatherData);
-    return weatherData;
+    weatherDataForm.city = city;
+
+    if (weatherData.weather[0].main === "Clear") {
+      weatherDataForm.weather = "맑음";
+    } else if (weatherData.weather[0].main === "Clouds") {
+      weatherDataForm.weather = "흐림";
+    } else if (weatherData.weather[0].main === "Rain") {
+      weatherDataForm.weather = "비";
+    } else if (weatherData.weather[0].main === "Snow") {
+      weatherDataForm.weather = "눈";
+    } else if (weatherData.weather[0].main === "Haze") {
+      weatherDataForm.weather = "안개";
+    }
+
+    weatherDataForm.temperature = weatherData.main.temp;
+    weatherDataForm.humidity = weatherData.main.humidity;
+    weatherDataForm.windSpeed = weatherData.wind.speed;
+
+    console.log(weatherDataForm);
+
+    return weatherDataForm;
   } catch (error) {
     // 에러 처리
     console.error("에러:", error);
