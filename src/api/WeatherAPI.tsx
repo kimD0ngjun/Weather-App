@@ -22,7 +22,7 @@ const getWeatherData = async (city: string) => {
     return weatherData;
   } catch (error) {
     // 에러 처리
-    console.error("Error fetching weather data:", error);
+    console.error("에러:", error);
     throw error; // 에러를 다시 던져서 상위 컴포넌트에서 처리할 수 있도록 합니다.
   }
 };
