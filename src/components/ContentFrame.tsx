@@ -1,18 +1,38 @@
-import styled from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 import NotFoundData from "../components/NotFound";
 import WeatherData from "../components/WeatherData";
 
 import { RootState } from "../redux/store";
 import { useAppSelector } from "../redux/hooks";
+import { ClickProps } from "../utility/inteface";
 
-const Frame = styled.div`
-  height: 450rem;
+const slideIn = keyframes`
+  from {
+    height: 0;
+  }
+  to {
+    height: 450rem;
+  }
+`;
+
+const Frame = styled.div<ClickProps>`
+  height: 0;
+  overflow: hidden;
+  ${({ isClicked }) =>
+    isClicked &&
+    css`
+      animation: ${slideIn} 0.5s ease forwards;
+    `}
 `;
 
 const ContentFrame = () => {
   const isClicked = useAppSelector((state: RootState) => state.click.click);
 
-  return <Frame>{isClicked ? <WeatherData /> : null}</Frame>;
+  return (
+    <Frame isClicked={isClicked}>
+      <WeatherData />
+    </Frame>
+  );
 };
 
 export default ContentFrame;

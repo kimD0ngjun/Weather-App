@@ -2,10 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 
 interface ClickedData {
   click: boolean;
+  update: boolean;
 }
 
 const initialState: ClickedData = {
   click: false,
+  update: false,
 };
 
 const clickedSlice = createSlice({
@@ -15,9 +17,12 @@ const clickedSlice = createSlice({
     click: (state) => {
       state.click = true;
     },
+    update: (state) => {
+      state.update = !state.update;
+    },
   },
 });
 
-export const { click } = clickedSlice.actions;
+export const { click, update } = clickedSlice.actions;
 
 export default clickedSlice.reducer;

@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import clickedReducer from "./ClickSlice";
+import updateReducer from "./ClickSlice";
 
 const store = configureStore({
   reducer: {
     click: clickedReducer,
+    update: updateReducer,
   },
 });
 
