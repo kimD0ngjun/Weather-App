@@ -1,5 +1,5 @@
 import styled, { keyframes, css } from "styled-components";
-import NotFoundData from "../components/NotFound";
+// import NotFoundData from "../components/NotFound";
 import WeatherData from "../components/WeatherData";
 
 import { RootState } from "../redux/store";

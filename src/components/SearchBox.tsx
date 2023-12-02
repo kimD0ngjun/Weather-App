@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import styled from "styled-components";
 import { AiOutlineSearch } from "react-icons/ai";
 import { LuMapPin } from "react-icons/lu";
@@ -57,12 +59,25 @@ const SearchBox = () => {
   const dispatch: AppDispatch = useAppDispatch();
   const handleClick = () => {
     dispatch(click());
+    // axios 관련 함수(인자는 city)
+  };
+
+  const [city, setCity] = useState("");
+
+  const displayCity = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCity(e.target.value);
+    console.log(e.target.value);
   };
 
   return (
     <SearchBoxWrapper>
       <LocationIcon />
-      <Input type="text" placeholder="Enter your location" />
+      <Input
+        type="text"
+        placeholder="Enter your location"
+        onChange={displayCity}
+        value={city}
+      />
       <SearchButton onClick={handleClick}>
         <SearchIcon />
       </SearchButton>
