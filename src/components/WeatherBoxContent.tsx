@@ -1,4 +1,9 @@
+import { useState, useEffect } from "react";
 import styled from "styled-components";
+import { useAppSelector } from "../redux/hooks";
+import { RootState } from "../redux/store";
+
+import getWeatherData from "../api/WeatherAPI";
 
 const WeatherBox = styled.div``;
 
@@ -40,14 +45,32 @@ const Description = styled.p`
 `;
 
 const WeatherBoxContent = () => {
+  const [weatherData, setWeatherData] = useState(Object);
+  const location = useAppSelector((state: RootState) => state.location.value);
+
+  const fetchWeatherData = async () => {
+    try {
+      const weatherData = await getWeatherData(location);
+      setWeatherData(weatherData);
+      console.log(weatherData);
+      return weatherData;
+    } catch (error) {
+      console.error("에러:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchWeatherData();
+  }, [location]);
+
   return (
     <WeatherBox>
       <WeatherImage src="/assets/sun.png" />
       <Temperature>
-        <TemperatureData>100</TemperatureData>
+        <TemperatureData>{weatherData.temperature}</TemperatureData>
         <TemperatureUnit>°C</TemperatureUnit>
       </Temperature>
-      <Description>맑음</Description>
+      <Description>{weatherData.weather}</Description>
     </WeatherBox>
   );
 };
