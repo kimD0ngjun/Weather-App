@@ -3,20 +3,20 @@ import key from "./ApiKey";
 import { WeatherDataForm } from "../utility/inteface";
 
 const weatherDataForm: WeatherDataForm = {
-  city: "",
+  location: "",
   weather: "",
   temperature: 0,
   humidity: 0,
   windSpeed: 0,
 };
 
-const getWeatherData = async (city: string) => {
+const getWeatherData = async (location: string) => {
   try {
     const response = await axios.get(
       `https://api.openweathermap.org/data/2.5/weather`,
       {
         params: {
-          q: city,
+          q: location,
           units: "metric",
           appid: key,
         },
@@ -25,7 +25,7 @@ const getWeatherData = async (city: string) => {
 
     const weatherData = response.data;
 
-    weatherDataForm.city = city;
+    weatherDataForm.location = location;
 
     if (weatherData.weather[0].main === "Clear") {
       weatherDataForm.weather = "맑음";

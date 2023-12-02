@@ -62,21 +62,18 @@ const SearchBox = () => {
 
   const handleClick = () => {
     dispatch(click());
-    getWeatherData(city);
   };
 
   const handleEnterKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      // 엔터 키를 누르면 버튼 클릭과 동일한 효과를 내기
       dispatch(click());
-      getWeatherData(city);
     }
   };
 
-  const [city, setCity] = useState("");
+  const [location, setLocation] = useState("");
 
-  const displayCity = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCity(e.target.value);
+  const displayLocation = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setLocation(e.target.value);
     console.log(e.target.value);
   };
 
@@ -86,9 +83,9 @@ const SearchBox = () => {
       <Input
         type="text"
         placeholder="Enter your location"
-        onChange={displayCity}
+        onChange={displayLocation}
         onKeyPress={handleEnterKeyPress}
-        value={city}
+        value={location}
       />
       <SearchButton onClick={handleClick}>
         <SearchIcon />

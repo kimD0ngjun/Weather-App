@@ -7,9 +7,13 @@ export interface UpdateProps {
 }
 
 export interface WeatherDataForm {
-  city: string;
+  location: string;
   weather: string;
   temperature: number;
   humidity: number;
   windSpeed: number;
+}
+
+export interface LocationState {
+  value: string;
 }
