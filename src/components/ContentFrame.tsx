@@ -18,6 +18,9 @@ const slideIn = keyframes`
 const Frame = styled.div<ClickProps>`
   height: 0;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  aligin-items: center;
   ${({ isClicked }) =>
     isClicked &&
     css`
