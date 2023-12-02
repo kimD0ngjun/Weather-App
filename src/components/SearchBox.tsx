@@ -7,8 +7,7 @@ import { LuMapPin } from "react-icons/lu";
 import { AppDispatch } from "../redux/store";
 import { useAppDispatch } from "../redux/hooks";
 import { click } from "../redux/ClickSlice";
-
-import getWeatherData from "../api/WeatherAPI";
+import { setLocation } from "../redux/LocationSlice";
 
 const SearchBoxWrapper = styled.div`
   display: flex;
@@ -59,21 +58,22 @@ const SearchIcon = styled(AiOutlineSearch)`
 
 const SearchBox = () => {
   const dispatch: AppDispatch = useAppDispatch();
+  const [locationInfo, setLocationInfo] = useState("");
 
   const handleClick = () => {
     dispatch(click());
+    dispatch(setLocation(locationInfo));
   };
 
   const handleEnterKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       dispatch(click());
+      dispatch(setLocation(locationInfo));
     }
   };
 
-  const [location, setLocation] = useState("");
-
   const displayLocation = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setLocation(e.target.value);
+    setLocationInfo(e.target.value);
     console.log(e.target.value);
   };
 
@@ -85,7 +85,7 @@ const SearchBox = () => {
         placeholder="Enter your location"
         onChange={displayLocation}
         onKeyPress={handleEnterKeyPress}
-        value={location}
+        value={locationInfo}
       />
       <SearchButton onClick={handleClick}>
         <SearchIcon />
