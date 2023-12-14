@@ -23,6 +23,12 @@ const Wind = styled.div`
   flex-direction: row;
 `;
 
+const Icon = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const HumidityIcon = styled(FaHandHoldingWater)`
   width: 50rem;
   height: 50rem;
@@ -40,9 +46,24 @@ const TextContainer = styled.div`
 `;
 
 const Span = styled.span`
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+`;
+
+const P = styled.p`
   color: #06283d;
   font-size: 18rem;
   font-weight: 650;
+  margin: 0;
+`;
+
+const Unit = styled.p`
+  color: #06283d;
+  font-size: 18rem;
+  font-weight: 650;
+  margin: 0;
+  white-space: pre-wrap;
 `;
 
 const Description = styled.p`
@@ -55,27 +76,42 @@ const Description = styled.p`
 
 const WeatherDetailsContent = () => {
   const humidity = useAppSelector((state: RootState) => state.weather.humidity);
+  const humidityValue = (Math.round(humidity * 10) / 10).toFixed(1);
+
   const windSpeed = useAppSelector(
     (state: RootState) => state.weather.windSpeed
   );
+  const windSpeedValue = (Math.round(windSpeed * 10) / 10).toFixed(1);
 
   return (
     <WeatherDetails>
       <Humidity>
-        <HumidityIcon />
+        <Icon>
+          <HumidityIcon />
+        </Icon>
         <TextContainer>
-          <Span>{humidity}</Span>
-          <Span>%</Span>
-          <Description>습도</Description>
+          <Span>
+            <P>{humidityValue}</P>
+            <Unit> %</Unit>
+          </Span>
+          <Span>
+            <Description>습도</Description>
+          </Span>
         </TextContainer>
       </Humidity>
 
       <Wind>
-        <WindIcon />
+        <Icon>
+          <WindIcon />
+        </Icon>
         <TextContainer>
-          <Span>{windSpeed}</Span>
-          <Span>km/h</Span>
-          <Description>풍속</Description>
+          <Span>
+            <P>{windSpeedValue}</P>
+            <Unit> km/h</Unit>
+          </Span>
+          <Span>
+            <Description>풍속</Description>
+          </Span>
         </TextContainer>
       </Wind>
     </WeatherDetails>

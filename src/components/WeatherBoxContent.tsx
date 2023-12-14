@@ -53,6 +53,7 @@ const WeatherBoxContent = () => {
   const temperature = useAppSelector(
     (state: RootState) => state.weather.temperature
   );
+  const temperatureyValue = (Math.round(temperature * 10) / 10).toFixed(1);
 
   return (
     <WeatherBox>
@@ -69,7 +70,7 @@ const WeatherBoxContent = () => {
         <WeatherImage src="/assets/mist.png" />
       ) : null}
       <Temperature>
-        <TemperatureData>{temperature}</TemperatureData>
+        <TemperatureData>{temperatureyValue}</TemperatureData>
         <TemperatureUnit>°C</TemperatureUnit>
       </Temperature>
       <Description>{weather}</Description>
