@@ -1,10 +1,6 @@
-import { useState, useEffect } from "react";
 import styled from "styled-components";
-import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { useAppSelector } from "../redux/hooks";
 import { RootState } from "../redux/store";
-
-import getWeatherData from "../api/WeatherAPI";
-import { WeatherDataForm } from "../utility/inteface";
 
 const WeatherBox = styled.div``;
 

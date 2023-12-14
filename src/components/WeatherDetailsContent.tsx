@@ -2,6 +2,9 @@ import styled from "styled-components";
 import { FaHandHoldingWater } from "react-icons/fa";
 import { PiWind } from "react-icons/pi";
 
+import { useAppSelector } from "../redux/hooks";
+import { RootState } from "../redux/store";
+
 const WeatherDetails = styled.div`
   display: flex;
   flex-direction: row;
@@ -51,12 +54,18 @@ const Description = styled.p`
 `;
 
 const WeatherDetailsContent = () => {
+  const humidity = useAppSelector((state: RootState) => state.weather.humidity);
+  const windSpeed = useAppSelector(
+    (state: RootState) => state.weather.windSpeed
+  );
+
   return (
     <WeatherDetails>
       <Humidity>
         <HumidityIcon />
         <TextContainer>
-          <Span>100 %</Span>
+          <Span>{humidity}</Span>
+          <Span>%</Span>
           <Description>습도</Description>
         </TextContainer>
       </Humidity>
@@ -64,7 +73,8 @@ const WeatherDetailsContent = () => {
       <Wind>
         <WindIcon />
         <TextContainer>
-          <Span>100 km/h</Span>
+          <Span>{windSpeed}</Span>
+          <Span>km/h</Span>
           <Description>풍속</Description>
         </TextContainer>
       </Wind>
