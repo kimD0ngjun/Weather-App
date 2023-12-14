@@ -7,7 +7,8 @@ import { LuMapPin } from "react-icons/lu";
 import { AppDispatch } from "../redux/store";
 import { useAppDispatch } from "../redux/hooks";
 import { click } from "../redux/ClickSlice";
-import { setLocation } from "../redux/LocationSlice";
+import { setWeather } from "../redux/WeatherSlice";
+import getWeatherData from "../api/WeatherAPI";
 
 const SearchBoxWrapper = styled.div`
   display: flex;
@@ -60,15 +61,21 @@ const SearchBox = () => {
   const dispatch: AppDispatch = useAppDispatch();
   const [locationInfo, setLocationInfo] = useState("");
 
-  const handleClick = () => {
+  const handleClick = async () => {
     dispatch(click());
-    dispatch(setLocation(locationInfo));
+
+    const weatherData = await getWeatherData(locationInfo);
+    dispatch(setWeather(weatherData));
   };
 
-  const handleEnterKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleEnterKeyPress = async (
+    e: React.KeyboardEvent<HTMLInputElement>
+  ) => {
     if (e.key === "Enter") {
       dispatch(click());
-      dispatch(setLocation(locationInfo));
+
+      const weatherData = await getWeatherData(locationInfo);
+      dispatch(setWeather(weatherData));
     }
   };
 

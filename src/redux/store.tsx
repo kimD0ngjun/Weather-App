@@ -1,13 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import clickedReducer from "./ClickSlice";
 import updateReducer from "./ClickSlice";
-import locationReducer from "./LocationSlice";
+import weatherReducer from "./WeatherSlice";
 
 const store = configureStore({
   reducer: {
     click: clickedReducer,
     update: updateReducer,
-    location: locationReducer,
+    weather: weatherReducer,
   },
 });
 

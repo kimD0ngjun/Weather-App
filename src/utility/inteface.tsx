@@ -13,7 +13,3 @@ export interface WeatherDataForm {
   humidity: number;
   windSpeed: number;
 }
-
-export interface LocationState {
-  value: string;
-}

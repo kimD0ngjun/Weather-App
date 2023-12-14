@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import { useAppSelector } from "../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { RootState } from "../redux/store";
 
 import getWeatherData from "../api/WeatherAPI";
@@ -53,51 +53,30 @@ const Description = styled.p`
 `;
 
 const WeatherBoxContent = () => {
-  const [weatherData, setWeatherData] = useState<WeatherDataForm>({
-    location: "",
-    weather: "",
-    temperature: 0,
-    humidity: 0,
-    windSpeed: 0,
-  });
-
-  console.log(weatherData);
-
-  const location = useAppSelector((state: RootState) => state.location.value);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await getWeatherData(location);
-        setWeatherData(data);
-        console.log(data);
-      } catch (error) {
-        console.error("에러:", error);
-      }
-    };
-
-    fetchData();
-  }, [location]);
+  const weather = useAppSelector((state: RootState) => state.weather.weather);
+  const temperature = useAppSelector(
+    (state: RootState) => state.weather.temperature
+  );
 
   return (
     <WeatherBox>
       {/* <Location>{weatherData.location.toUpperCase()}</Location> */}
-      {weatherData.weather === "맑음" ? (
+      {weather === "맑음" ? (
         <WeatherImage src="/assets/sun.png" />
-      ) : weatherData.weather === "흐림" ? (
+      ) : weather === "흐림" ? (
         <WeatherImage src="/assets/cloud.png" />
-      ) : weatherData.weather === "비" ? (
-        <WeatherImage src="/assets/rain.png" />
-      ) : weatherData.weather === "눈" ? (
+      ) : weather === "비" ? (
+        <WeatherImage src="/assets/rainy.png" />
+      ) : weather === "눈" ? (
         <WeatherImage src="/assets/snowing.png" />
-      ) : weatherData.weather === "안개" ? (
+      ) : weather === "안개" ? (
         <WeatherImage src="/assets/mist.png" />
       ) : null}
       <Temperature>
-        <TemperatureData>{weatherData.temperature}</TemperatureData>
+        <TemperatureData>{temperature}</TemperatureData>
         <TemperatureUnit>°C</TemperatureUnit>
       </Temperature>
-      <Description>{weatherData.weather}</Description>
+      <Description>{weather}</Description>
     </WeatherBox>
   );
 };
