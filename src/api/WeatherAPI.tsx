@@ -13,14 +13,7 @@ const weatherDataForm: WeatherDataForm = {
 const getWeatherData = async (location: string) => {
   try {
     const response = await axios.get(
-      `https://api.openweathermap.org/data/2.5/weather`,
-      {
-        params: {
-          q: location,
-          units: "metric",
-          appid: key,
-        },
-      }
+      `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${key}`
     );
 
     const weatherData = response.data;
@@ -47,9 +40,8 @@ const getWeatherData = async (location: string) => {
 
     return weatherDataForm;
   } catch (error) {
-    // 에러 처리
     console.error("에러:", error);
-    throw error; // 에러를 다시 던져서 상위 컴포넌트에서 처리할 수 있도록 합니다.
+    throw error;
   }
 };
 
