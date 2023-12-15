@@ -10,13 +10,6 @@ const WeatherImage = styled.img`
   margin-bottom: 20rem;
 `;
 
-// const Location = styled.div`
-//   margin-top: 5rem;
-//   text-align: center;
-//   font-size: 25rem;
-//   font-weight: 800;
-// `;
-
 const Temperature = styled.p`
   display: flex;
   flex-direction: row;
@@ -41,11 +34,27 @@ const TemperatureUnit = styled.p`
   font-weight: 550;
 `;
 
-const Description = styled.p`
+const Description = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  aligin-items: center;
+`;
+
+const LocationDescription = styled.p`
+  margin-bottom: 14rem;
+  margin-top: 3.5rem;
+  font-size: 21rem;
+  font-weight: 600;
+  white-space: pre-wrap;
+`;
+
+const WeatherDescription = styled.p`
   margin-bottom: 20rem;
   margin-top: 0rem;
   font-size: 24rem;
   font-weight: 600;
+  white-space: pre-wrap;
 `;
 
 const WeatherBoxContent = () => {
@@ -54,6 +63,7 @@ const WeatherBoxContent = () => {
     (state: RootState) => state.weather.temperature
   );
   const temperatureyValue = (Math.round(temperature * 10) / 10).toFixed(1);
+  const location = useAppSelector((state: RootState) => state.weather.location);
 
   return (
     <WeatherBox>
@@ -73,7 +83,10 @@ const WeatherBoxContent = () => {
         <TemperatureData>{temperatureyValue}</TemperatureData>
         <TemperatureUnit>°C</TemperatureUnit>
       </Temperature>
-      <Description>{weather}</Description>
+      <Description>
+        <LocationDescription>{`${location} `}</LocationDescription>
+        <WeatherDescription>{` ${weather}`}</WeatherDescription>
+      </Description>
     </WeatherBox>
   );
 };
