@@ -10,15 +10,37 @@ const weatherDataForm: WeatherDataForm = {
   windSpeed: 0,
 };
 
-const getWeatherData = async (location: string) => {
+const translateToEnglish = async (text: string) => {
   try {
     const response = await axios.get(
-      `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${key}`
+      `https://api.mymemory.translated.net/get?q=${encodeURIComponent(
+        text
+      )}&langpair=ko|en`
+    );
+
+    const translatedText = response.data.responseData.translatedText;
+    return translatedText;
+  } catch (error) {
+    console.error("번역 에러:", error);
+    throw error;
+  }
+};
+
+const getWeatherData = async (location: string) => {
+  try {
+    let translatedLocation = location;
+
+    if (/[\u3131-\uD79D]/.test(location)) {
+      translatedLocation = await translateToEnglish(location);
+    }
+
+    const response = await axios.get(
+      `https://api.openweathermap.org/data/2.5/weather?q=${translatedLocation}&units=metric&appid=${key}`
     );
 
     const weatherData = response.data;
 
-    weatherDataForm.location = location;
+    weatherDataForm.location = translatedLocation;
 
     if (weatherData.weather[0].main === "Clear") {
       weatherDataForm.weather = "맑음";

@@ -67,7 +67,6 @@ const WeatherBoxContent = () => {
 
   return (
     <WeatherBox>
-      {/* <Location>{weatherData.location.toUpperCase()}</Location> */}
       {weather === "맑음" ? (
         <WeatherImage src="/assets/sun.png" />
       ) : weather === "흐림" ? (
@@ -84,7 +83,7 @@ const WeatherBoxContent = () => {
         <TemperatureUnit>°C</TemperatureUnit>
       </Temperature>
       <Description>
-        <LocationDescription>{`${location} `}</LocationDescription>
+        <LocationDescription>{`${location.toLowerCase()} `}</LocationDescription>
         <WeatherDescription>{` ${weather}`}</WeatherDescription>
       </Description>
     </WeatherBox>
