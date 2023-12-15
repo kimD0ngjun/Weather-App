@@ -9,15 +9,15 @@ const errorSlice = createSlice({
   name: "error",
   initialState,
   reducers: {
-    error: (state) => {
+    setError: (state) => {
       state.error = true;
     },
-    nonError: (state) => {
+    clearError: (state) => {
       state.error = false;
     },
   },
 });
 
-export const { error, nonError } = errorSlice.actions;
+export const { setError, clearError } = errorSlice.actions;
 
 export default errorSlice.reducer;

@@ -9,6 +9,7 @@ import { useAppDispatch } from "../redux/hooks";
 import { click } from "../redux/ClickSlice";
 import { setWeather } from "../redux/WeatherSlice";
 import getWeatherData from "../api/WeatherAPI";
+import { setError, clearError } from "../redux/ErrorSlice";
 
 const SearchBoxWrapper = styled.div`
   display: flex;
@@ -67,7 +68,9 @@ const SearchBox = () => {
     try {
       const weatherData = await getWeatherData(locationInfo);
       dispatch(setWeather(weatherData));
+      dispatch(clearError());
     } catch (error) {
+      dispatch(setError());
       console.log(error);
     }
   };
@@ -81,7 +84,9 @@ const SearchBox = () => {
       try {
         const weatherData = await getWeatherData(locationInfo);
         dispatch(setWeather(weatherData));
+        dispatch(clearError());
       } catch (error) {
+        dispatch(setError());
         console.log(error);
       }
     }
