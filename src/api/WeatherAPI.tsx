@@ -28,9 +28,6 @@ const translateToEnglish = async (text: string) => {
 };
 
 const getWeatherData = async (location: string) => {
-  console.log(key);
-  console.log(import.meta.env.VITE_APP_API_ENDPOINT);
-
   try {
     let translatedLocation = location;
 
@@ -61,8 +58,6 @@ const getWeatherData = async (location: string) => {
     weatherDataForm.temperature = weatherData.main.temp;
     weatherDataForm.humidity = weatherData.main.humidity;
     weatherDataForm.windSpeed = weatherData.wind.speed;
-
-    console.log(weatherDataForm);
 
     return weatherDataForm;
   } catch (error) {

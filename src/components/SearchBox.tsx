@@ -94,7 +94,6 @@ const SearchBox = () => {
 
   const displayLocation = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLocationInfo(e.target.value);
-    console.log(e.target.value);
   };
 
   return (
