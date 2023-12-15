@@ -45,7 +45,7 @@ const LocationDescription = styled.p`
   margin-bottom: 14rem;
   margin-top: 3.5rem;
   font-size: 21rem;
-  font-weight: 600;
+  font-weight: 700;
   white-space: pre-wrap;
 `;
 
@@ -83,7 +83,9 @@ const WeatherBoxContent = () => {
         <TemperatureUnit>°C</TemperatureUnit>
       </Temperature>
       <Description>
-        <LocationDescription>{`${location.toLowerCase()} `}</LocationDescription>
+        <LocationDescription>{`${
+          location.charAt(0).toUpperCase() + location.slice(1).toLowerCase()
+        }`}</LocationDescription>
         <WeatherDescription>{` ${weather}`}</WeatherDescription>
       </Description>
     </WeatherBox>
