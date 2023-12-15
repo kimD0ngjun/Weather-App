@@ -5,6 +5,7 @@ import WeatherData from "../components/WeatherData";
 import { RootState } from "../redux/store";
 import { useAppSelector } from "../redux/hooks";
 import { ClickProps } from "../utility/inteface";
+import NotFoundData from "./NotFound";
 
 const slideIn = keyframes`
   from {
@@ -30,10 +31,11 @@ const Frame = styled.div<ClickProps>`
 
 const ContentFrame = () => {
   const isClicked = useAppSelector((state: RootState) => state.click.click);
+  const isError = useAppSelector((state: RootState) => state.error.error);
 
   return (
     <Frame isClicked={isClicked}>
-      <WeatherData />
+      {isError ? <NotFoundData /> : <WeatherData />}
     </Frame>
   );
 };
