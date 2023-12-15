@@ -24,4 +24,7 @@ dist-ssr
 *.sw?
 
 # Ignore .env
-.env
+.env                
+# .env.local          
+# .env.[mode]         
+# .env.[mode].local   

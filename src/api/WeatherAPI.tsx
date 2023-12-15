@@ -1,7 +1,7 @@
 import axios from "axios";
 import { WeatherDataForm } from "../utility/inteface";
 
-const key = process.env.VITE_APP_API_ENDPOINT;
+const key = import.meta.env.VITE_APP_API_ENDPOINT;
 
 const weatherDataForm: WeatherDataForm = {
   location: "",
@@ -28,6 +28,9 @@ const translateToEnglish = async (text: string) => {
 };
 
 const getWeatherData = async (location: string) => {
+  console.log(key);
+  console.log(import.meta.env.VITE_APP_API_ENDPOINT);
+
   try {
     let translatedLocation = location;
 
