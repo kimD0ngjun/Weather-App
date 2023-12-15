@@ -23,8 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 
-# Ignore .env
-.env                
+# Ignore 
+.env.local              
 # .env.local          
 # .env.[mode]         
 # .env.[mode].local   
