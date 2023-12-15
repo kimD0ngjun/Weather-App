@@ -64,8 +64,12 @@ const SearchBox = () => {
   const handleClick = async () => {
     dispatch(click());
 
-    const weatherData = await getWeatherData(locationInfo);
-    dispatch(setWeather(weatherData));
+    try {
+      const weatherData = await getWeatherData(locationInfo);
+      dispatch(setWeather(weatherData));
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleEnterKeyPress = async (
@@ -74,8 +78,12 @@ const SearchBox = () => {
     if (e.key === "Enter") {
       dispatch(click());
 
-      const weatherData = await getWeatherData(locationInfo);
-      dispatch(setWeather(weatherData));
+      try {
+        const weatherData = await getWeatherData(locationInfo);
+        dispatch(setWeather(weatherData));
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
