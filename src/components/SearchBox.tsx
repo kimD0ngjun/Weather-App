@@ -10,6 +10,7 @@ import { click } from "../redux/ClickSlice";
 import { setWeather } from "../redux/WeatherSlice";
 import getWeatherData from "../api/WeatherAPI";
 import { setError, clearError } from "../redux/ErrorSlice";
+import { startLoading, stopLoading } from "../redux/LoadingSlice";
 
 const SearchBoxWrapper = styled.div`
   display: flex;
@@ -64,6 +65,7 @@ const SearchBox = () => {
 
   const handleClick = async () => {
     dispatch(click());
+    dispatch(startLoading());
 
     try {
       const weatherData = await getWeatherData(locationInfo);
@@ -72,6 +74,8 @@ const SearchBox = () => {
     } catch (error) {
       dispatch(setError());
       console.log(error);
+    } finally {
+      dispatch(stopLoading());
     }
   };
 

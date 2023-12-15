@@ -3,6 +3,7 @@ import clickedReducer from "./ClickSlice";
 import updateReducer from "./ClickSlice";
 import weatherReducer from "./WeatherSlice";
 import errorReducer from "./ErrorSlice";
+import loadingReducer from "./LoadingSlice";
 
 const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
     update: updateReducer,
     weather: weatherReducer,
     error: errorReducer,
+    loading: loadingReducer,
   },
 });
 
