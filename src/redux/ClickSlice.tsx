@@ -1,9 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-
-interface ClickedData {
-  click: boolean;
-  update: boolean;
-}
+import { ClickedData } from "../utility/inteface";
 
 const initialState: ClickedData = {
   click: false,
