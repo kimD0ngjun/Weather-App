@@ -1,6 +1,7 @@
 import axios from "axios";
-import key from "./ApiKey";
 import { WeatherDataForm } from "../utility/inteface";
+
+const key = process.env.VITE_APP_API_ENDPOINT;
 
 const weatherDataForm: WeatherDataForm = {
   location: "",

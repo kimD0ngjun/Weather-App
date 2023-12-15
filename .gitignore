@@ -23,5 +23,5 @@ dist-ssr
 *.sln
 *.sw?
 
-# Ignore APIKey.ts
-APIKey.ts
+# Ignore .env
+.env
