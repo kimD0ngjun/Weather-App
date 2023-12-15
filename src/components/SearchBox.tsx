@@ -1,11 +1,31 @@
+import { useState } from "react";
+
 import styled from "styled-components";
 import { AiOutlineSearch } from "react-icons/ai";
 import { LuMapPin } from "react-icons/lu";
 
+import { AppDispatch } from "../redux/store";
+import { useAppDispatch } from "../redux/hooks";
+import { click } from "../redux/ClickSlice";
+import { setWeather } from "../redux/WeatherSlice";
+import getWeatherData from "../api/WeatherAPI";
+import { setError, clearError } from "../redux/ErrorSlice";
+
+const SearchBoxWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10rem;
+  padding: 10rem;
+  margin-bottom: 10rem;
+  background-color: #fff;
+  border-radius: 5rem;
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.1);
+`;
+
 const LocationIcon = styled(LuMapPin)`
   color: #555;
-  width: 20rem;
-  height: 20rem;
+  width: 25rem;
+  height: 25rem;
 `;
 
 const Input = styled.input`
@@ -29,30 +49,65 @@ const SearchButton = styled.button`
 
   &:active {
     transform: translateY(2rem);
+    cursor: grab;
   }
 `;
 
 const SearchIcon = styled(AiOutlineSearch)`
-  width: 20rem;
-  height: 20rem;
-`;
-
-const SearchBoxWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 10rem;
-  padding: 10rem;
-  background-color: #fff;
-  border-radius: 5rem;
-  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.1);
+  width: 22rem;
+  height: 22rem;
 `;
 
 const SearchBox = () => {
+  const dispatch: AppDispatch = useAppDispatch();
+  const [locationInfo, setLocationInfo] = useState("");
+
+  const handleClick = async () => {
+    dispatch(click());
+
+    try {
+      const weatherData = await getWeatherData(locationInfo);
+      dispatch(setWeather(weatherData));
+      dispatch(clearError());
+    } catch (error) {
+      dispatch(setError());
+      console.log(error);
+    }
+  };
+
+  const handleEnterKeyPress = async (
+    e: React.KeyboardEvent<HTMLInputElement>
+  ) => {
+    if (e.key === "Enter") {
+      dispatch(click());
+
+      try {
+        const weatherData = await getWeatherData(locationInfo);
+        dispatch(setWeather(weatherData));
+        dispatch(clearError());
+      } catch (error) {
+        dispatch(setError());
+        console.log(error);
+      }
+    }
+  };
+
+  const displayLocation = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setLocationInfo(e.target.value);
+    console.log(e.target.value);
+  };
+
   return (
     <SearchBoxWrapper>
       <LocationIcon />
-      <Input type="text" placeholder="Enter your location" />
-      <SearchButton>
+      <Input
+        type="text"
+        placeholder="Enter your location"
+        onChange={displayLocation}
+        onKeyPress={handleEnterKeyPress}
+        value={locationInfo}
+      />
+      <SearchButton onClick={handleClick}>
         <SearchIcon />
       </SearchButton>
     </SearchBoxWrapper>

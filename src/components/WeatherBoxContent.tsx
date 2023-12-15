@@ -1,11 +1,13 @@
 import styled from "styled-components";
+import { useAppSelector } from "../redux/hooks";
+import { RootState } from "../redux/store";
 
 const WeatherBox = styled.div``;
 
 const WeatherImage = styled.img`
   width: 150rem;
-  margin-top: 40rem;
-  margin-bottom: 30rem;
+  margin-top: 20rem;
+  margin-bottom: 20rem;
 `;
 
 const Temperature = styled.p`
@@ -32,22 +34,60 @@ const TemperatureUnit = styled.p`
   font-weight: 550;
 `;
 
-const Description = styled.p`
+const Description = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  aligin-items: center;
+`;
+
+const LocationDescription = styled.p`
+  margin-bottom: 14rem;
+  margin-top: 3.5rem;
+  font-size: 21rem;
+  font-weight: 700;
+  white-space: pre-wrap;
+`;
+
+const WeatherDescription = styled.p`
   margin-bottom: 20rem;
   margin-top: 0rem;
   font-size: 24rem;
   font-weight: 600;
+  white-space: pre-wrap;
 `;
 
 const WeatherBoxContent = () => {
+  const weather = useAppSelector((state: RootState) => state.weather.weather);
+  const temperature = useAppSelector(
+    (state: RootState) => state.weather.temperature
+  );
+  const temperatureyValue = (Math.round(temperature * 10) / 10).toFixed(1);
+  const location = useAppSelector((state: RootState) => state.weather.location);
+
   return (
     <WeatherBox>
-      <WeatherImage src="/assets/sun.png" />
+      {weather === "맑음" ? (
+        <WeatherImage src="/assets/sun.png" />
+      ) : weather === "흐림" ? (
+        <WeatherImage src="/assets/cloud.png" />
+      ) : weather === "비" ? (
+        <WeatherImage src="/assets/rainy.png" />
+      ) : weather === "눈" ? (
+        <WeatherImage src="/assets/snowing.png" />
+      ) : weather === "안개" ? (
+        <WeatherImage src="/assets/mist.png" />
+      ) : null}
       <Temperature>
-        <TemperatureData>100</TemperatureData>
+        <TemperatureData>{temperatureyValue}</TemperatureData>
         <TemperatureUnit>°C</TemperatureUnit>
       </Temperature>
-      <Description>맑음</Description>
+      <Description>
+        <LocationDescription>{`${
+          location.charAt(0).toUpperCase() + location.slice(1).toLowerCase()
+        }`}</LocationDescription>
+        <WeatherDescription>{` ${weather}`}</WeatherDescription>
+      </Description>
     </WeatherBox>
   );
 };

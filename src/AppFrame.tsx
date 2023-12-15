@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import SearchBox from "./components/SearchBox";
-// import NotFoundData from "./components/NotFound";
-import WeatherData from "./components/WeatherData";
+import ContentFrame from "./components/ContentFrame";
 
 const AppFrameWrapper = styled.div`
   width: 350rem;
@@ -17,8 +16,7 @@ const AppFrame = () => {
   return (
     <AppFrameWrapper>
       <SearchBox />
-      <WeatherData />
-      {/* <NotFoundData /> */}
+      <ContentFrame />
     </AppFrameWrapper>
   );
 };
