@@ -4,7 +4,7 @@
 <br />
 
 <div  align="center">
-  <img width="70%" src="https://github.com/kimD0ngjun/Weather-App/blob/main/public/assets/cloud.png" alt="cloud">
+  <img width="24%" src="https://github.com/kimD0ngjun/Weather-App/blob/main/public/assets/cloud.png" alt="cloud">
 </div>
 
 <br />
