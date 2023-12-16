@@ -10,11 +10,11 @@
 <br />
 
 ## 프로젝트 개요
-- 프로젝트 명 : 지역 날씨 정보 검색
+- 프로젝트 목표 : 지역 날씨 정보 검색
 - 프로젝트 기간 : 2023.12.1 ~ 2023.12.15
-- 진행 목적 : API 콜 연습 및 매개변수 활용
+- 진행 목적 : API 콜 연습 및 매개변수 활용
 - 진행 방식 : 라이브러리 기반 리팩토링
-- 구현 영역 : `Frontend`
+- 구현 영역 : `Frontend`
 - 배포 링크 : <a href="https://weather-app-eta-swart-57.vercel.app/" target="_blank">Weather Info</a>
 
 ## 활용 API
