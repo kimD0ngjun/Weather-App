@@ -1,4 +1,4 @@
-# Weather-App for learning API
+# Weather-App for learning API
 ---
 
 <br />
